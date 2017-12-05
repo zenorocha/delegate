@@ -38,4 +38,33 @@ describe('delegate', function() {
         delegation.destroy();
         assert.ok(global.spy.calledOnce);
     });
+
+    it('should use `document` if the element is unspecified', function(done) {
+        delegate('a', 'click', function() {
+            done();
+        });
+
+        simulant.fire(global.anchor, simulant('click'));
+    });
+
+    it('should add event listeners to all the elements in a base selector', function() {
+        var spy = sinon.spy();
+        delegate('li', 'a', 'click', spy);
+
+        var anchors = document.querySelectorAll('a')
+        simulant.fire(anchors[0], simulant('click'));
+        simulant.fire(anchors[1], simulant('click'));
+        assert.ok(spy.calledTwice);
+    });
+
+    it('should add event listeners to all the elements in a base array', function() {
+        var spy = sinon.spy();
+        var items = document.querySelectorAll('a')
+        delegate(items, 'a', 'click', spy);
+
+        var anchors = document.querySelectorAll('a')
+        simulant.fire(anchors[0], simulant('click'));
+        simulant.fire(anchors[1], simulant('click'));
+        assert.ok(spy.calledTwice);
+    });
 });
