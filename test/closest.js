@@ -20,13 +20,13 @@ describe('closest', function() {
     });
 
     it('should return the closest parent based on the selector', function() {
-        assert.ok(closest(global.c, '#b'), global.b);
-        assert.ok(closest(global.c, '#a'), global.a);
-        assert.ok(closest(global.b, '#a'), global.a);
+        assert.ok(global.c.closest('#b'), global.b);
+        assert.ok(global.c.closest('#a'), global.a);
+        assert.ok(global.b.closest('#a'), global.a);
     });
 
     it('should return itself if the same selector is passed', function() {
-        assert.ok(closest(document.body, 'body'), document.body);
+        assert.ok(document.body.closest('body'), document.body);
     });
 
     it('should not throw on elements without matches()', function() {
@@ -37,7 +37,7 @@ describe('closest', function() {
         };
 
         try {
-            closest(fakeElement, '#a')
+            fakeElement.closest('#a')
         } catch (err) {
             assert.fail();
         }
