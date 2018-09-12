@@ -24,6 +24,10 @@
     "simulant": "^0.2.2",
     "sinon": "^1.17.6"
   },
+  "files": [
+    "src",
+    "dist"
+  ],
   "scripts": {
     "build": "browserify src/delegate.js -s delegate -o dist/delegate.js",
     "test": "karma start --single-run"
