@@ -70,7 +70,7 @@ function listener(element, selector, type, callback) {
         e.delegateTarget = closest(e.target, selector);
 
         // Closest may match elements outside of the currentTarget
-        // so it needs to be limited to it elements inside
+        // so it needs to be limited to elements inside it
         if (e.delegateTarget && e.currentTarget.contains(e.delegateTarget)) {
             callback.call(element, e);
         }
