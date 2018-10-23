@@ -12,7 +12,8 @@ var closest = require('./closest');
  */
 function _delegate(element, selector, type, callback, useCapture) {
     var listenerFn = listener.apply(this, arguments);
-
+    
+    element.removeEventListener(type, listenerFn, useCapture); //To ensure eventListener bound once
     element.addEventListener(type, listenerFn, useCapture);
 
     return {
