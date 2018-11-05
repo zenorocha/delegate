@@ -4,7 +4,8 @@
   "version": "3.2.0",
   "repository": "zenorocha/delegate",
   "license": "MIT",
-  "main": "src/delegate.js",
+  "main": "cjs/delegate.js",
+  "module": "src/delegate.js",
   "keywords": [
     "event",
     "delegate",
