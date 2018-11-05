@@ -21,11 +21,12 @@
     "karma-sinon": "^1.0.4",
     "mocha": "^3.1.2",
     "phantomjs-polyfill": "0.0.2",
+    "rollup": "^0.67.0",
     "simulant": "^0.2.2",
     "sinon": "^1.17.6"
   },
   "scripts": {
-    "build": "browserify src/delegate.js -s delegate -o dist/delegate.js",
+    "build": "rollup --config ; browserify cjs/delegate.js -s delegate -o dist/delegate.js",
     "test": "karma start --single-run"
   }
 }

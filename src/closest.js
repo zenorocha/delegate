@@ -29,5 +29,4 @@ function closest (element, selector) {
         element = element.parentNode;
     }
 }
-
-module.exports = closest;
+export default closest;

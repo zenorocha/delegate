@@ -1,4 +1,4 @@
-var closest = require('../src/closest');
+var closest = require('../cjs/delegate');
 
 describe('closest', function() {
     before(function() {

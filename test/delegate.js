@@ -1,4 +1,4 @@
-var delegate = require('../src/delegate');
+var delegate = require('../cjs/delegate');
 var simulant = require('simulant');
 
 describe('delegate', function() {
