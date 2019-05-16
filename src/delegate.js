@@ -7,7 +7,7 @@ var closest = require('./closest');
  * @param {String} selector
  * @param {String} type
  * @param {Function} callback
- * @param {Boolean} useCapture
+ * @param {Boolean} [useCapture]
  * @return {Object}
  */
 function _delegate(element, selector, type, callback, useCapture) {
@@ -29,7 +29,7 @@ function _delegate(element, selector, type, callback, useCapture) {
  * @param {String} selector
  * @param {String} type
  * @param {Function} callback
- * @param {Boolean} useCapture
+ * @param {Boolean} [useCapture]
  * @return {Object}
  */
 function delegate(elements, selector, type, callback, useCapture) {
