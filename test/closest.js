@@ -1,4 +1,4 @@
-var closest = require('../src/closest');
+import closest from '../src/closest';
 
 describe('closest', function() {
     before(function() {
@@ -9,10 +9,6 @@ describe('closest', function() {
                     '</div>';
 
         document.body.innerHTML += html;
-
-        global.a = document.querySelector('#a');
-        global.b = document.querySelector('#b');
-        global.c = document.querySelector('#c');
     });
 
     after(function() {
@@ -20,9 +16,13 @@ describe('closest', function() {
     });
 
     it('should return the closest parent based on the selector', function() {
-        assert.ok(closest(global.c, '#b'), global.b);
-        assert.ok(closest(global.c, '#a'), global.a);
-        assert.ok(closest(global.b, '#a'), global.a);
+        var a = document.querySelector('#a');
+        var b = document.querySelector('#b');
+        var c = document.querySelector('#c');
+
+        assert.ok(closest(c, '#b'), b);
+        assert.ok(closest(c, '#a'), a);
+        assert.ok(closest(b, '#a'), a);
     });
 
     it('should return itself if the same selector is passed', function() {

@@ -20,7 +20,7 @@ if (typeof Element !== 'undefined' && !Element.prototype.matches) {
  * @param {String} selector
  * @return {Function}
  */
-function closest (element, selector) {
+export default function closest (element, selector) {
     while (element && element.nodeType !== DOCUMENT_NODE_TYPE) {
         if (typeof element.matches === 'function' &&
             element.matches(selector)) {
@@ -29,5 +29,3 @@ function closest (element, selector) {
         element = element.parentNode;
     }
 }
-
-module.exports = closest;

@@ -23,7 +23,7 @@ var delegate = require('delegate');
 ###### Browser (Standalone)
 
 ```html
-<script src="dist/delegate.js"></script>
+<script src="lib/delegate-umd.js"></script>
 ```
 
 ## Usage
