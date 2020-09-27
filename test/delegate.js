@@ -1,5 +1,5 @@
-var delegate = require('../src/delegate');
-var simulant = require('simulant');
+import delegate from '../src/delegate';
+import simulant from 'simulant';
 
 describe('delegate', function() {
     before(function() {
@@ -12,39 +12,41 @@ describe('delegate', function() {
                    '</ul>';
 
         document.body.innerHTML += html;
-
-        global.container = document.querySelector('ul');
-        global.anchor = document.querySelector('a');
-
-        global.spy = sinon.spy(global.container, 'removeEventListener');
     });
 
     after(function() {
-        global.spy.restore();
         document.body.innerHTML = '';
     });
 
     it('should add an event listener', function(done) {
-        delegate(global.container, 'a', 'click', function() {
+        var container = document.querySelector('ul');
+        var anchor = document.querySelector('a');
+
+        delegate(container, 'a', 'click', function() {
             done();
         });
 
-        simulant.fire(global.anchor, simulant('click'));
+        simulant.fire(anchor, simulant('click'));
     });
 
     it('should remove an event listener', function() {
-        var delegation = delegate(global.container, 'a', 'click', function() {});
+        var container = document.querySelector('ul');
+        var spy = sinon.spy(container, 'removeEventListener');
+        var delegation = delegate(container, 'a', 'click', function() {});
 
         delegation.destroy();
-        assert.ok(global.spy.calledOnce);
+        assert.ok(spy.calledOnce);
+
+        spy.restore();
     });
 
     it('should use `document` if the element is unspecified', function(done) {
+        var anchor = document.querySelector('a');
         delegate('a', 'click', function() {
             done();
         });
 
-        simulant.fire(global.anchor, simulant('click'));
+        simulant.fire(anchor, simulant('click'));
     });
 
     it('should remove an event listener the unspecified base (`document`)', function() {

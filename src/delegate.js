@@ -1,4 +1,4 @@
-var closest = require('./closest');
+import closest from './closest';
 
 /**
  * Delegates event to a selector.
@@ -32,7 +32,7 @@ function _delegate(element, selector, type, callback, useCapture) {
  * @param {Boolean} useCapture
  * @return {Object}
  */
-function delegate(elements, selector, type, callback, useCapture) {
+export default function delegate(elements, selector, type, callback, useCapture) {
     // Handle the regular Element usage
     if (typeof elements.addEventListener === 'function') {
         return _delegate.apply(null, arguments);
@@ -74,5 +74,3 @@ function listener(element, selector, type, callback) {
         }
     }
 }
-
-module.exports = delegate;

@@ -1,8 +1,10 @@
+const { nodeResolve } = require('@rollup/plugin-node-resolve')
+
 module.exports = function(karma) {
     karma.set({
-        plugins: ['karma-browserify', 'karma-chai', 'karma-sinon', 'karma-mocha', 'karma-phantomjs-launcher'],
+        plugins: ['karma-rollup-preprocessor', 'karma-chai', 'karma-sinon', 'karma-mocha', 'karma-phantomjs-launcher'],
 
-        frameworks: ['browserify', 'chai', 'sinon', 'mocha'],
+        frameworks: ['chai', 'sinon', 'mocha'],
 
         files: [
             'src/**/*.js',
@@ -11,12 +13,18 @@ module.exports = function(karma) {
         ],
 
         preprocessors: {
-            'src/**/*.js' : ['browserify'],
-            'test/**/*.js': ['browserify']
+            'src/**/*.js' : ['rollup'],
+            'test/**/*.js': ['rollup']
         },
 
-        browserify: {
-            debug: true
+        rollupPreprocessor: {
+          output: {
+            format: 'iife',
+            name: 'delegate'
+          },
+          plugins: [
+            nodeResolve({mainFields: ['browser', 'jsnext:main', 'module', 'main']})
+          ]
         },
 
         browsers: ['PhantomJS']
